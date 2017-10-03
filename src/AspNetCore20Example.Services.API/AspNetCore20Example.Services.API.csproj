@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AspNetCore20Example.Application\AspNetCore20Example.Application.csproj" />
+    <ProjectReference Include="..\AspNetCore20Example.Infra.CrossCutting.Identity\AspNetCore20Example.Infra.CrossCutting.Identity.csproj" />
+    <ProjectReference Include="..\AspNetCore20Example.Infra.CrossCutting.IoC\AspNetCore20Example.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\AspNetCore20Example.Infra.CrossCutting.LoggerProviders\AspNetCore20Example.Infra.CrossCutting.LoggerProviders.csproj" />
+    <ProjectReference Include="..\AspNetCore20Example.Infra.Data\AspNetCore20Example.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
