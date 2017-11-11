@@ -1,24 +1,22 @@
 ﻿using AspNetCore20Example.Application.ViewModels;
+using AspNetCore20Example.Services.API.Integration.Tests.Configuration;
 using AspNetCore20Example.Services.API.Integration.Tests.DTOs;
 using Newtonsoft.Json;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace AspNetCore20Example.Services.API.Integration.Tests.Controllers
 {
-    public class ContatosControllerIntegrationTest
+    public class ContatosControllerIntegrationTest : BaseIntegrationTest
     {
-        public ContatosControllerIntegrationTest()
+        public ContatosControllerIntegrationTest(BaseTestFixture fixture) : base(fixture)
         {
-            Environment.CriarServidor();
         }
 
         [Fact]
         public async Task Novo_ContatoValido_DeveRetornar200()
         {
-            var login = await Utils.RealizarLoginOrganizador(Environment.Client);
+            var login = await Utils.RealizarLogin(Client);
 
             var contato = new ContatoViewModel
             {
@@ -35,7 +33,7 @@ namespace AspNetCore20Example.Services.API.Integration.Tests.Controllers
                 }
             };
 
-            var response = await Environment.Server
+            var response = await Server
                 .CreateRequest("api/contatos")
                 .AddHeader("Authorization", "Bearer " + login.access_token)
                 .And(req => req.Content = Utils.GerarRequestContent(contato))

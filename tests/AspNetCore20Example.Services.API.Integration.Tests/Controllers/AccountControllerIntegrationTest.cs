@@ -1,18 +1,16 @@
 ﻿using AspNetCore20Example.Infra.CrossCutting.Identity.Models.AccountViewModels;
+using AspNetCore20Example.Services.API.Integration.Tests.Configuration;
 using AspNetCore20Example.Services.API.Integration.Tests.DTOs;
 using Newtonsoft.Json;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace AspNetCore20Example.Services.API.Integration.Tests.Controllers
 {
-    public class AccountControllerIntegrationTest
+    public class AccountControllerIntegrationTest : BaseIntegrationTest
     {
-        public AccountControllerIntegrationTest()
+        public AccountControllerIntegrationTest(BaseTestFixture fixture) : base(fixture)
         {
-            Environment.CriarServidor();
         }
 
         [Fact]
@@ -29,7 +27,7 @@ namespace AspNetCore20Example.Services.API.Integration.Tests.Controllers
 
             var postContent = Utils.GerarRequestContent(usuario);
 
-            var response = await Environment.Client.PostAsync("api/registrar", postContent);
+            var response = await Client.PostAsync("api/registrar", postContent);
             var registrarResult = JsonConvert.DeserializeObject<UsuarioJsonDTO>(await response.Content.ReadAsStringAsync());
 
             response.EnsureSuccessStatusCode();
