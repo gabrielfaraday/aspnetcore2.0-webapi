@@ -1,7 +1,5 @@
 ﻿using AspNetCore20Example.Domain.Contatos.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.IO;
-using Microsoft.Extensions.Configuration;
 using AspNetCore20Example.Infra.Data.Mappings;
 using System.Linq;
 using System;
@@ -17,6 +15,11 @@ namespace AspNetCore20Example.Infra.Data.Context
 
         public DbSet<UsuarioDados> UsuarioDados { get; set; }
 
+        public MainContext(DbContextOptions<MainContext> options)
+            : base(options)
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ContatoMapping());
@@ -26,16 +29,6 @@ namespace AspNetCore20Example.Infra.Data.Context
             modelBuilder.ApplyConfiguration(new UsuarioDadosMapping());
 
             base.OnModelCreating(modelBuilder);
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
         }
 
         public override int SaveChanges()

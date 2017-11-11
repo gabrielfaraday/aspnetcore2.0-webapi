@@ -9,7 +9,6 @@ using AspNetCore20Example.Infra.CrossCutting.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using AspNetCore20Example.Infra.CrossCutting.LoggerProviders.ElasticSearch;
-using AspNetCore20Example.Infra.CrossCutting.LoggerProviders;
 using AspNetCore20Example.Infra.CrossCutting.IoC;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
@@ -20,6 +19,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using AspNetCore20Example.Infra.Data.Context;
 
 namespace AspNetCore20Example.Services.API
 {
@@ -35,6 +35,9 @@ namespace AspNetCore20Example.Services.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<MainContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
