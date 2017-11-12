@@ -12,7 +12,7 @@ namespace AspNetCore20Example.Infra.CrossCutting.Identity.Models.AccountViewMode
         public string CPF { get; set; }
 
         [Required]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "O e-mail informado é inválido")]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 

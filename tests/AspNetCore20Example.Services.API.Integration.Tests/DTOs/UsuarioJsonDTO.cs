@@ -3,12 +3,12 @@
     public class UsuarioJsonDTO
     {
         public bool success { get; set; }
-        public Data data { get; set; }
+        public DataDTO data { get; set; }
     }
 
-    public class Data
+    public class DataDTO
     {
-        public Result result { get; set; }
+        public ResultDTO result { get; set; }
         public int id { get; set; }
         public object exception { get; set; }
         public int status { get; set; }
@@ -20,23 +20,23 @@
         public bool isFaulted { get; set; }
     }
 
-    public class Result
+    public class ResultDTO
     {
         public string access_token { get; set; }
         public int expires_in { get; set; }
-        public User user { get; set; }
+        public UserDTO user { get; set; }
     }
 
-    public class User
+    public class UserDTO
     {
         public string id { get; set; }
         public string nome { get; set; }
         public string email { get; set; }
         public string cpf { get; set; }
-        public Claim[] claims { get; set; }
+        public ClaimDTO[] claims { get; set; }
     }
 
-    public class Claim
+    public class ClaimDTO
     {
         public string type { get; set; }
         public string value { get; set; }

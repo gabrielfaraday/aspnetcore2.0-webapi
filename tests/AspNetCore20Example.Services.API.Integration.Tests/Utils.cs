@@ -10,7 +10,7 @@ namespace AspNetCore20Example.Services.API.Integration.Tests
 {
     public class Utils
     {
-        public static async Task<Result> RealizarLogin(HttpClient client)
+        public static async Task<ResultDTO> RealizarLogin(HttpClient client)
         {
             var usuario = new LoginViewModel
             {
@@ -33,7 +33,7 @@ namespace AspNetCore20Example.Services.API.Integration.Tests
             return loginResult.data.result;
         }
 
-        public static async Task<Result> RegistrarUsuario(HttpClient client)
+        public static async Task<ResultDTO> RegistrarUsuario(HttpClient client)
         {
             var usuario = new RegisterViewModel
             {

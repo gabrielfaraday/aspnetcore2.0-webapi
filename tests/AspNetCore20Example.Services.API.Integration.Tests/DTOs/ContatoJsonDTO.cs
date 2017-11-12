@@ -19,12 +19,12 @@ namespace AspNetCore20Example.Services.API.Integration.Tests.DTOs
         public object dataNascimento { get; set; }
         public string enderecoId { get; set; }
         public object[] telefones { get; set; }
-        public Endereco endereco { get; set; }
+        public EnderecoDTO endereco { get; set; }
         public object telefoneEmAlteracao { get; set; }
-        public Validationresult1 validationResult { get; set; }
+        public ValidationresultDTO validationResult { get; set; }
     }
 
-    public class Endereco
+    public class EnderecoDTO
     {
         public string id { get; set; }
         public string logradouro { get; set; }
@@ -34,19 +34,12 @@ namespace AspNetCore20Example.Services.API.Integration.Tests.DTOs
         public string cep { get; set; }
         public string cidade { get; set; }
         public string estado { get; set; }
-        public Validationresult validationResult { get; set; }
+        public ValidationresultDTO validationResult { get; set; }
     }
 
-    public class Validationresult
+    public class ValidationresultDTO
     {
         public bool isValid { get; set; }
         public object[] errors { get; set; }
     }
-
-    public class Validationresult1
-    {
-        public bool isValid { get; set; }
-        public object[] errors { get; set; }
-    }
-
 }
