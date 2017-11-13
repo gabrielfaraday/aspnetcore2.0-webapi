@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AspNetCore20Example.Application\AspNetCore20Example.Application.csproj" />
+    <ProjectReference Include="..\AspNetCore20Example.Infra.CrossCutting.AspnetFilters\AspNetCore20Example.Infra.CrossCutting.AspnetFilters.csproj" />
     <ProjectReference Include="..\AspNetCore20Example.Infra.CrossCutting.Identity\AspNetCore20Example.Infra.CrossCutting.Identity.csproj" />
     <ProjectReference Include="..\AspNetCore20Example.Infra.CrossCutting.IoC\AspNetCore20Example.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\AspNetCore20Example.Infra.CrossCutting.LoggerProviders\AspNetCore20Example.Infra.CrossCutting.LoggerProviders.csproj" />

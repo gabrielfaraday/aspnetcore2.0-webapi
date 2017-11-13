@@ -20,6 +20,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using AspNetCore20Example.Infra.Data.Context;
+using AspNetCore20Example.Infra.CrossCutting.AspnetFilters;
 
 namespace AspNetCore20Example.Services.API
 {
@@ -115,6 +116,7 @@ namespace AspNetCore20Example.Services.API
             {
                 options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter());
                 options.UseCentralRoutePrefix(new RouteAttribute("api"));
+                options.Filters.Add(new ServiceFilterAttribute(typeof(GlobalExceptionHandlingFilter)));
             });
 
             services.AddAutoMapper();

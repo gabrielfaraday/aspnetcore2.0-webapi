@@ -14,6 +14,8 @@ using AspNetCore20Example.Infra.Data.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using AspNetCore20Example.Infra.CrossCutting.LoggerProviders.ElasticSearch;
+using Microsoft.Extensions.Logging;
+using AspNetCore20Example.Infra.CrossCutting.AspnetFilters;
 
 namespace AspNetCore20Example.Infra.CrossCutting.IoC
 {
@@ -46,10 +48,8 @@ namespace AspNetCore20Example.Infra.CrossCutting.IoC
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
             //Infra.CrossCutting.Filtros
-            //services.AddScoped<ILogger<GlobalExceptionHandlingFilter>, Logger<GlobalExceptionHandlingFilter>>();
-            //services.AddScoped<ILogger<GlobalActionLogger>, Logger<GlobalActionLogger>>();
-            //services.AddScoped<GlobalExceptionHandlingFilter>();
-            //services.AddScoped<GlobalActionLogger>();
+            services.AddScoped<ILogger<GlobalExceptionHandlingFilter>, Logger<GlobalExceptionHandlingFilter>>();
+            services.AddScoped<GlobalExceptionHandlingFilter>();
 
             //Infra.CrossCutting.LoggerProviders
             services.AddSingleton<ESClientProvider>();
