@@ -17,7 +17,7 @@ namespace AspNetCore20Example.Infra.CrossCutting.Identity.Models.AccountViewMode
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "A senha deve ter entre 6 e 100 caracteres", MinimumLength = 4)]
+        [StringLength(100, ErrorMessage = "A senha deve ter entre 4 e 100 caracteres", MinimumLength = 4)]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Password { get; set; }
